@@ -6,13 +6,38 @@ import {
   getFallbackDualCodingCopy,
 } from '../lib/site.js';
 
+function buildResult({ title, description, harm, actor, lookup }) {
+  const key = buildDualCodingKey(harm, actor);
+  const copy = lookup[key] ?? getFallbackDualCodingCopy(harm, actor);
+
+  return {
+    title,
+    description,
+    harm,
+    actor,
+    copy,
+  };
+}
+
 function DiagnosticFlag({ events, lookup, defaultEvent }) {
   const [mode, setMode] = useState('dataset');
   const [selectedEventId, setSelectedEventId] = useState(defaultEvent?.id ?? '');
   const [customDescription, setCustomDescription] = useState('');
   const [selectedHarm, setSelectedHarm] = useState(defaultEvent?.harm_type_primary ?? HARM_OPTIONS[0]);
   const [selectedActor, setSelectedActor] = useState(defaultEvent?.actor_axis ?? ACTOR_OPTIONS[0]);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(() => {
+    if (!defaultEvent) {
+      return null;
+    }
+
+    return buildResult({
+      title: defaultEvent.title,
+      description: defaultEvent.description,
+      harm: defaultEvent.harm_type_primary,
+      actor: defaultEvent.actor_axis,
+      lookup,
+    });
+  });
   const [errorMessage, setErrorMessage] = useState('');
 
   const currentEvent = events.find((event) => event.id === selectedEventId) ?? defaultEvent ?? null;
@@ -47,16 +72,13 @@ function DiagnosticFlag({ events, lookup, defaultEvent }) {
 
     setErrorMessage('');
 
-    const key = buildDualCodingKey(selectedHarm, selectedActor);
-    const copy = lookup[key] ?? getFallbackDualCodingCopy(selectedHarm, selectedActor);
-
-    setResult({
+    setResult(buildResult({
       title: mode === 'dataset' ? currentEvent?.title ?? 'Selected dataset event' : 'New event description',
       description,
       harm: selectedHarm,
       actor: selectedActor,
-      copy,
-    });
+      lookup,
+    }));
   }
 
   return (

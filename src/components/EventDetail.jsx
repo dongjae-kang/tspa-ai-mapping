@@ -1,4 +1,39 @@
+import { useEffect, useState } from 'react';
 import { FIT_LABELS, FRAMEWORK_ROWS, MISFIT_LABELS } from '../lib/site.js';
+
+function DetailHeader({ event }) {
+  const [isFresh, setIsFresh] = useState(true);
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setIsFresh(false);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  return (
+    <header className={`detail-header${isFresh ? ' fresh' : ''}`}>
+      <div>
+        <p className="eyebrow">Selected event</p>
+        <h3 id={`event-${event.id}`}>{event.title}</h3>
+      </div>
+      <div className="detail-metadata">
+        <p>
+          <strong>Date:</strong> {event.date}
+        </p>
+        <p>
+          <strong>Platforms:</strong> {event.platforms.join(', ')}
+        </p>
+        <p>
+          <strong>AI involvement type:</strong> {event.ai_involvement_type}
+        </p>
+      </div>
+    </header>
+  );
+}
 
 function EventDetail({ event, hasResults }) {
   if (!event) {
@@ -15,23 +50,7 @@ function EventDetail({ event, hasResults }) {
 
   return (
     <article className="detail-panel" aria-labelledby={`event-${event.id}`}>
-      <header className="detail-header">
-        <div>
-          <p className="eyebrow">Selected event</p>
-          <h3 id={`event-${event.id}`}>{event.title}</h3>
-        </div>
-        <div className="detail-metadata">
-          <p>
-            <strong>Date:</strong> {event.date}
-          </p>
-          <p>
-            <strong>Platforms:</strong> {event.platforms.join(', ')}
-          </p>
-          <p>
-            <strong>AI involvement type:</strong> {event.ai_involvement_type}
-          </p>
-        </div>
-      </header>
+      <DetailHeader key={event.id} event={event} />
 
       <section className="detail-section">
         <h4>Event description</h4>

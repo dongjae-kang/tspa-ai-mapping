@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import EventDetail from './EventDetail.jsx';
 import EventFilters from './EventFilters.jsx';
 import EventList from './EventList.jsx';
@@ -12,6 +13,21 @@ function MappingVisualizer({
   selectedEventId,
   onSelectEvent,
 }) {
+  const detailPanelRef = useRef(null);
+
+  function handleSelectEvent(eventId) {
+    onSelectEvent(eventId);
+
+    if (window.innerWidth <= 900) {
+      window.requestAnimationFrame(() => {
+        detailPanelRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      });
+    }
+  }
+
   return (
     <section id="mapping-visualizer" className="section-block">
       <div className="section-shell">
@@ -33,15 +49,16 @@ function MappingVisualizer({
               options={filterOptions}
               onChange={onFilterChange}
               onClear={onClearFilters}
+              hasNoResults={filteredEvents.length === 0}
             />
             <EventList
               events={filteredEvents}
               selectedEventId={selectedEventId}
-              onSelect={onSelectEvent}
+              onSelect={handleSelectEvent}
               onClear={onClearFilters}
             />
           </aside>
-          <div className="column-right">
+          <div ref={detailPanelRef} className="column-right">
             <EventDetail event={selectedEvent} hasResults={filteredEvents.length > 0} />
           </div>
         </div>

@@ -87,6 +87,22 @@ export function getUniqueOptions(events, selector) {
   return Array.from(values).sort((left, right) => left.localeCompare(right));
 }
 
+export function getOptionCounts(events, selector) {
+  const counts = new Map();
+
+  events.forEach((event) => {
+    const value = selector(event);
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  });
+
+  return Array.from(counts.entries())
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([value, count]) => ({
+      value,
+      count,
+    }));
+}
+
 export function matchesFilters(event, filters) {
   const normalizedSearch = filters.search.trim().toLowerCase();
   const matchesSearch =

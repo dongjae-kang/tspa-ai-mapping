@@ -1,4 +1,4 @@
-function EventFilters({ filters, options, onChange, onClear }) {
+function EventFilters({ filters, options, onChange, onClear, hasNoResults }) {
   return (
     <div className="filters-panel" aria-label="Event filters">
       <div className="filters-header">
@@ -17,14 +17,15 @@ function EventFilters({ filters, options, onChange, onClear }) {
           placeholder="Search title or description"
         />
       </label>
+      {hasNoResults ? <p className="filter-note">No events match these filters.</p> : null}
       <div className="filter-grid">
         <label className="field">
           <span>Year</span>
           <select name="year" value={filters.year} onChange={onChange}>
             <option value="all">All years</option>
-            {options.years.map((year) => (
-              <option key={year} value={year}>
-                {year}
+            {options.years.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label} ({option.count})
               </option>
             ))}
           </select>
@@ -33,9 +34,9 @@ function EventFilters({ filters, options, onChange, onClear }) {
           <span>Platform</span>
           <select name="platform" value={filters.platform} onChange={onChange}>
             <option value="all">All platforms</option>
-            {options.platforms.map((platform) => (
-              <option key={platform} value={platform}>
-                {platform}
+            {options.platforms.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label} ({option.count})
               </option>
             ))}
           </select>
@@ -48,9 +49,9 @@ function EventFilters({ filters, options, onChange, onClear }) {
             onChange={onChange}
           >
             <option value="all">All types</option>
-            {options.aiTypes.map((aiType) => (
-              <option key={aiType} value={aiType}>
-                {aiType}
+            {options.aiTypes.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label} ({option.count})
               </option>
             ))}
           </select>
@@ -59,9 +60,9 @@ function EventFilters({ filters, options, onChange, onClear }) {
           <span>Misfit class</span>
           <select name="misfit" value={filters.misfit} onChange={onChange}>
             <option value="all">All classes</option>
-            {options.misfits.map((misfit) => (
-              <option key={misfit} value={misfit}>
-                {misfit}
+            {options.misfits.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label} ({option.count})
               </option>
             ))}
           </select>

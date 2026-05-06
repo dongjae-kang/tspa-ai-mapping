@@ -6,7 +6,7 @@ import {
   DEFAULT_FILTERS,
   MISFIT_LABELS,
   getDiagnosticDefaultEvent,
-  getUniqueOptions,
+  getOptionCounts,
   getYear,
   matchesFilters,
 } from './lib/site.js';
@@ -71,31 +71,45 @@ function App() {
   }, []);
 
   const filterOptions = {
-    years: getUniqueOptions(events, (event) => getYear(event.date)),
-    platforms: getUniqueOptions(events, (event) => event.platform_family),
-    aiTypes: getUniqueOptions(events, (event) => event.ai_involvement_type),
-    misfits: getUniqueOptions(events, (event) => MISFIT_LABELS[event.misfit_classification] ?? event.misfit_classification),
+    years: getOptionCounts(events, (event) => getYear(event.date)).map(({ value, count }) => ({
+      value,
+      label: value,
+      count,
+    })),
+    platforms: getOptionCounts(events, (event) => event.platform_family).map(({ value, count }) => ({
+      value,
+      label: value,
+      count,
+    })),
+    aiTypes: getOptionCounts(events, (event) => event.ai_involvement_type).map(({ value, count }) => ({
+      value,
+      label: value,
+      count,
+    })),
+    misfits: getOptionCounts(events, (event) => event.misfit_classification).map(({ value, count }) => ({
+      value,
+      label: MISFIT_LABELS[value] ?? value,
+      count,
+    })),
   };
 
-  const filteredEvents = events.filter((event) =>
-    matchesFilters(event, {
-      ...filters,
-      misfit:
-        filters.misfit === 'all'
-          ? 'all'
-          : Object.entries(MISFIT_LABELS).find(([, label]) => label === filters.misfit)?.[0] ?? filters.misfit,
-    }),
-  );
+  const filteredEvents = events.filter((event) => matchesFilters(event, filters));
 
   useEffect(() => {
+    if (filteredEvents.length === 0) {
+      setSelectedEventId(null);
+      return;
+    }
+
     if (!selectedEventId) {
+      setSelectedEventId(filteredEvents[0].id);
       return;
     }
 
     const selectedStillVisible = filteredEvents.some((event) => event.id === selectedEventId);
 
     if (!selectedStillVisible) {
-      setSelectedEventId(null);
+      setSelectedEventId(filteredEvents[0].id);
     }
   }, [filteredEvents, selectedEventId]);
 
