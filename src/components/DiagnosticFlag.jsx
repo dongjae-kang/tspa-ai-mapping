@@ -78,11 +78,6 @@ function DiagnosticFlag({ events, lookup, defaultEvent }) {
     }
 
     setMode(nextMode);
-
-    if (nextMode === 'dataset' && currentEvent) {
-      setSelectedHarm(currentEvent.harm_type_primary);
-      setSelectedActor(currentEvent.actor_axis);
-    }
   }
 
   function handleDatasetEventChange(nextEventId) {
