@@ -46,6 +46,21 @@ export const DEFAULT_FILTERS = {
   misfit: 'all',
 };
 
+export const FILTER_CONFIG = {
+  year: {
+    allLabel: 'All years',
+  },
+  platform: {
+    allLabel: 'All platforms',
+  },
+  aiInvolvement: {
+    allLabel: 'All types',
+  },
+  misfit: {
+    allLabel: 'All classes',
+  },
+};
+
 export function getYear(date) {
   return date.split('-')[0];
 }
@@ -101,6 +116,51 @@ export function getOptionCounts(events, selector) {
       value,
       count,
     }));
+}
+
+export function getEventFilterValue(event, filterName) {
+  if (filterName === 'year') {
+    return getYear(event.date);
+  }
+
+  if (filterName === 'platform') {
+    return event.platform_family;
+  }
+
+  if (filterName === 'aiInvolvement') {
+    return event.ai_involvement_type;
+  }
+
+  if (filterName === 'misfit') {
+    return event.misfit_classification;
+  }
+
+  return '';
+}
+
+export function getCrossFilteredOptions(events, filters, filterName, baseOptions) {
+  const workingFilters = {
+    ...filters,
+    [filterName]: 'all',
+  };
+
+  const workingSubset = events.filter((event) => matchesFilters(event, workingFilters));
+
+  return {
+    allLabel: FILTER_CONFIG[filterName].allLabel,
+    allCount: workingSubset.length,
+    options: baseOptions.map((option) => {
+      const count = workingSubset.filter(
+        (event) => getEventFilterValue(event, filterName) === option.value,
+      ).length;
+
+      return {
+        ...option,
+        count,
+        disabled: count === 0 && filters[filterName] !== option.value,
+      };
+    }),
+  };
 }
 
 export function matchesFilters(event, filters) {

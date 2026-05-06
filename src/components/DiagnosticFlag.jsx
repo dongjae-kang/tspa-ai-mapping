@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ACTOR_OPTIONS,
   HARM_OPTIONS,
@@ -19,30 +19,64 @@ function buildResult({ title, description, harm, actor, lookup }) {
   };
 }
 
+function ResultHeader() {
+  const [isFresh, setIsFresh] = useState(true);
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setIsFresh(false);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  return (
+    <div className={`result-header${isFresh ? ' fresh' : ''}`}>
+      <p className="eyebrow">Step 3</p>
+      <h3>Dual coding result</h3>
+    </div>
+  );
+}
+
 function DiagnosticFlag({ events, lookup, defaultEvent }) {
   const [mode, setMode] = useState('dataset');
   const [selectedEventId, setSelectedEventId] = useState(defaultEvent?.id ?? '');
   const [customDescription, setCustomDescription] = useState('');
   const [selectedHarm, setSelectedHarm] = useState(defaultEvent?.harm_type_primary ?? HARM_OPTIONS[0]);
   const [selectedActor, setSelectedActor] = useState(defaultEvent?.actor_axis ?? ACTOR_OPTIONS[0]);
-  const [result, setResult] = useState(() => {
-    if (!defaultEvent) {
-      return null;
-    }
-
-    return buildResult({
-      title: defaultEvent.title,
-      description: defaultEvent.description,
-      harm: defaultEvent.harm_type_primary,
-      actor: defaultEvent.actor_axis,
-      lookup,
-    });
-  });
+  const [result, setResult] = useState(() =>
+    defaultEvent
+      ? buildResult({
+          title: defaultEvent.title,
+          description: defaultEvent.description,
+          harm: defaultEvent.harm_type_primary,
+          actor: defaultEvent.actor_axis,
+          lookup,
+        })
+      : null,
+  );
   const [errorMessage, setErrorMessage] = useState('');
 
   const currentEvent = events.find((event) => event.id === selectedEventId) ?? defaultEvent ?? null;
+  const datasetResult = currentEvent
+    ? buildResult({
+        title: currentEvent.title,
+        description: currentEvent.description,
+        harm: selectedHarm,
+        actor: selectedActor,
+        lookup,
+      })
+    : null;
+  const visibleResult = mode === 'dataset' ? datasetResult : result;
+  const resultKey = `${selectedEventId}-${selectedHarm}-${selectedActor}`;
 
   function handleModeChange(nextMode) {
+    if (nextMode === 'custom' && datasetResult) {
+      setResult(datasetResult);
+    }
+
     setMode(nextMode);
 
     if (nextMode === 'dataset' && currentEvent) {
@@ -189,32 +223,38 @@ function DiagnosticFlag({ events, lookup, defaultEvent }) {
 
               {errorMessage ? <p className="field-error">{errorMessage}</p> : null}
 
-              <button type="button" className="primary-button" onClick={applyDualCoding}>
-                Apply dual coding
-              </button>
+              {mode === 'custom' ? (
+                <button type="button" className="primary-button" onClick={applyDualCoding}>
+                  Apply dual coding
+                </button>
+              ) : null}
             </div>
           </div>
 
-          {result ? (
+          {visibleResult ? (
             <aside className="result-card" aria-live="polite">
-              <p className="eyebrow">Step 3</p>
-              <h3>Dual coding result</h3>
-              <p className="result-title">{result.title}</p>
-              <p>{result.description}</p>
+              {mode === 'dataset' ? <ResultHeader key={resultKey} /> : (
+                <div className="result-header">
+                  <p className="eyebrow">Step 3</p>
+                  <h3>Dual coding result</h3>
+                </div>
+              )}
+              <p className="result-title">{visibleResult.title}</p>
+              <p>{visibleResult.description}</p>
               <div className="result-tags">
                 <span>
-                  <strong>Harm:</strong> {result.harm}
+                  <strong>Harm:</strong> {visibleResult.harm}
                 </span>
                 <span>
-                  <strong>Actor:</strong> {result.actor}
+                  <strong>Actor:</strong> {visibleResult.actor}
                 </span>
               </div>
               <div className="result-copy">
-                <p>{result.copy.harmOnly}</p>
-                <p>{result.copy.actorInsight}</p>
+                <p>{visibleResult.copy.harmOnly}</p>
+                <p>{visibleResult.copy.actorInsight}</p>
                 <p>
                   <strong>Recommended response category under dual coding:</strong>{' '}
-                  {result.copy.recommendedResponse}
+                  {visibleResult.copy.recommendedResponse}
                 </p>
               </div>
               <p className="result-note">

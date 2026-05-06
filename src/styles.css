@@ -308,6 +308,12 @@ blockquote {
   color: var(--text);
 }
 
+.field select option:disabled,
+.field select option.muted-option {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
 .field textarea {
   resize: vertical;
 }
@@ -629,6 +635,15 @@ thead th {
 
 .result-card {
   min-height: 20rem;
+}
+
+.result-header {
+  background-color: var(--surface);
+  transition: background-color 350ms ease;
+}
+
+.result-header.fresh {
+  background-color: var(--accent-soft);
 }
 
 .result-title {
