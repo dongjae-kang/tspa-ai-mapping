@@ -22,9 +22,14 @@ function EventFilters({ filters, options, onChange, onClear, hasNoResults }) {
         <label className="field">
           <span>Year</span>
           <select name="year" value={filters.year} onChange={onChange}>
-            <option value="all">All years</option>
-            {options.years.map((option) => (
-              <option key={option.value} value={option.value}>
+            <option value="all">{options.years.allLabel} ({options.years.allCount})</option>
+            {options.years.options.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                disabled={option.disabled}
+                className={option.disabled ? 'muted-option' : ''}
+              >
                 {option.label} ({option.count})
               </option>
             ))}
@@ -33,9 +38,14 @@ function EventFilters({ filters, options, onChange, onClear, hasNoResults }) {
         <label className="field">
           <span>Platform</span>
           <select name="platform" value={filters.platform} onChange={onChange}>
-            <option value="all">All platforms</option>
-            {options.platforms.map((option) => (
-              <option key={option.value} value={option.value}>
+            <option value="all">{options.platforms.allLabel} ({options.platforms.allCount})</option>
+            {options.platforms.options.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                disabled={option.disabled}
+                className={option.disabled ? 'muted-option' : ''}
+              >
                 {option.label} ({option.count})
               </option>
             ))}
@@ -48,9 +58,14 @@ function EventFilters({ filters, options, onChange, onClear, hasNoResults }) {
             value={filters.aiInvolvement}
             onChange={onChange}
           >
-            <option value="all">All types</option>
-            {options.aiTypes.map((option) => (
-              <option key={option.value} value={option.value}>
+            <option value="all">{options.aiTypes.allLabel} ({options.aiTypes.allCount})</option>
+            {options.aiTypes.options.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                disabled={option.disabled}
+                className={option.disabled ? 'muted-option' : ''}
+              >
                 {option.label} ({option.count})
               </option>
             ))}
@@ -59,9 +74,14 @@ function EventFilters({ filters, options, onChange, onClear, hasNoResults }) {
         <label className="field">
           <span>Misfit class</span>
           <select name="misfit" value={filters.misfit} onChange={onChange}>
-            <option value="all">All classes</option>
-            {options.misfits.map((option) => (
-              <option key={option.value} value={option.value}>
+            <option value="all">{options.misfits.allLabel} ({options.misfits.allCount})</option>
+            {options.misfits.options.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                disabled={option.disabled}
+                className={option.disabled ? 'muted-option' : ''}
+              >
                 {option.label} ({option.count})
               </option>
             ))}

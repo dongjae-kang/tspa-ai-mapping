@@ -5,6 +5,7 @@ import MappingVisualizer from './components/MappingVisualizer.jsx';
 import {
   DEFAULT_FILTERS,
   MISFIT_LABELS,
+  getCrossFilteredOptions,
   getDiagnosticDefaultEvent,
   getOptionCounts,
   getYear,
@@ -70,7 +71,7 @@ function App() {
     };
   }, []);
 
-  const filterOptions = {
+  const baseFilterOptions = {
     years: getOptionCounts(events, (event) => getYear(event.date)).map(({ value, count }) => ({
       value,
       label: value,
@@ -91,6 +92,18 @@ function App() {
       label: MISFIT_LABELS[value] ?? value,
       count,
     })),
+  };
+
+  const filterOptions = {
+    years: getCrossFilteredOptions(events, filters, 'year', baseFilterOptions.years),
+    platforms: getCrossFilteredOptions(events, filters, 'platform', baseFilterOptions.platforms),
+    aiTypes: getCrossFilteredOptions(
+      events,
+      filters,
+      'aiInvolvement',
+      baseFilterOptions.aiTypes,
+    ),
+    misfits: getCrossFilteredOptions(events, filters, 'misfit', baseFilterOptions.misfits),
   };
 
   const filteredEvents = events.filter((event) => matchesFilters(event, filters));
