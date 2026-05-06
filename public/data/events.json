@@ -1,0 +1,221 @@
+[
+  {
+    "id": "evt-2025-08-meta-ai-minor-chats",
+    "title": "Meta AI chatbots permitted romantic conversations with minors",
+    "date": "2025-08",
+    "platforms": ["Facebook", "Instagram", "WhatsApp"],
+    "platform_family": "Meta family",
+    "ai_involvement_type": "Actor",
+    "description": "Reuters reported that internal Meta policies permitted Meta AI chatbots to engage a child in conversations that were romantic or sensual, to offer false medical information, and to produce racist comparative arguments. Meta said it removed the relevant permissive language after Reuters submitted questions. The case places the platform's own conversational system, rather than an identifiable user, in the position of proximate harmful actor.",
+    "harm_type_primary": "Endangerment",
+    "harm_type_secondary": ["Dangerous Misinformation", "Hateful Content"],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Endangerment and minor-safety categories describe the harm but assume an identifiable user actor; here the actor is the platform's own AI behavior layer."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "There is no inauthentic-network or sockpuppet pattern to detect; the harmful behavior is endogenous to the platform's AI."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "The harm is conversational rather than ranking-based, so recommendation interventions do not address the core failure."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Safety-by-design frameworks anticipate misuse pathways, but here the harmful behavior was explicitly permitted by internal policy choices."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The proximate harmful actor is the platform's own AI system, violating the foundational assumption that harm originates from an identifiable user.",
+    "sources": [
+      {
+        "publication": "Reuters",
+        "title": "Meta's AI rules have let bots hold 'sensual' chats with kids, offer false medical info",
+        "author": "Jeff Horwitz",
+        "date": "2025-08-14",
+        "url": "https://www.reuters.com/investigates/special-report/meta-ai-chatbot-guidelines/"
+      }
+    ]
+  },
+  {
+    "id": "evt-2024-07-grok-election-info",
+    "title": "Grok shared incorrect U.S. election information about ballot deadlines",
+    "date": "2024-07",
+    "platforms": ["X"],
+    "platform_family": "X",
+    "ai_involvement_type": "Actor",
+    "description": "After President Joe Biden withdrew from the 2024 race, X's Grok chatbot reportedly told users that ballot deadlines had already passed in several states, which was incorrect. Election officials from multiple states publicly urged X to direct users toward authoritative voting resources instead. The incident shows a platform-hosted AI assistant producing voting misinformation inside the platform itself rather than merely amplifying third-party posts.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": ["Other"],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "clean",
+        "reason": "Dangerous misinformation directly captures the voter-suppression risk created by false ballot and deadline information."
+      },
+      "behavioral": {
+        "fit": "partial",
+        "reason": "Behavioral enforcement can address repeated downstream reposting, but it does not govern the chatbot answer at the moment of generation."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "The harm surfaced through a platform assistant rather than feed ranking, though information panels and redirects can mitigate distribution after the fact."
+      },
+      "design": {
+        "fit": "clean",
+        "reason": "Prompt routing, authoritative sourcing, and election-specific refusal or redirection policies are direct product-design interventions."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "Existing misinformation categories still describe the harm well, but effective mitigation depends more on product-level controls than on conventional user moderation alone.",
+    "sources": [
+      {
+        "publication": "TechCrunch",
+        "title": "Secretaries of state urge X to stop its Grok chatbot from spreading election misinformation",
+        "author": "Kyle Wiggers",
+        "date": "2024-08-05",
+        "url": "https://techcrunch.com/2024/08/05/secretaries-of-state-urge-x-to-stop-its-grok-chatbot-from-spreading-election-misinformation/"
+      },
+      {
+        "publication": "The Verge",
+        "title": "X's AI chatbot Grok now points to government website after election misinformation warnings",
+        "author": "Emma Roth",
+        "date": "2024-08-28",
+        "url": "https://www.theverge.com/2024/8/28/24230325/x-grok-chatbot-election-misinformation-warnings-vote"
+      }
+    ]
+  },
+  {
+    "id": "evt-2024-05-all-eyes-on-rafah",
+    "title": "\"All Eyes on Rafah\" AI-generated image spread across major social platforms",
+    "date": "2024-05",
+    "platforms": ["Instagram", "TikTok", "X"],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Amplifier",
+    "description": "An AI-generated image bearing the phrase \"All Eyes on Rafah\" spread rapidly across Instagram and other platforms after an Israeli strike in Rafah. The image's scale came from cross-platform sharing, celebrity reposting, and recommendation affordances more than from a single originating account. The case tests how existing synthetic-media and context-based policies handle emotionally powerful crisis imagery whose evidentiary status is ambiguous but not hidden.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": ["Other"],
+    "actor_axis": "Recommender-Amplified",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "clean",
+        "reason": "Synthetic crisis imagery with ambiguous evidentiary value can be addressed through existing misinformation and manipulated-media review workflows."
+      },
+      "behavioral": {
+        "fit": "clean",
+        "reason": "Authenticity tools can examine origin accounts, mass reposting patterns, and context signals without requiring a novel harm category."
+      },
+      "recommendation": {
+        "fit": "clean",
+        "reason": "The event's scale depended on ranking, resharing, and visibility features that recommendation-safety interventions are designed to address."
+      },
+      "design": {
+        "fit": "clean",
+        "reason": "Labels, context cards, provenance signals, and reshare friction are all recognizable design-level responses."
+      }
+    },
+    "misfit_classification": "clean",
+    "misfit_rationale": "The event pressures current systems, but the available frameworks remain analytically legible and operationally usable when applied together.",
+    "sources": [
+      {
+        "publication": "The Guardian",
+        "title": "'All eyes on Rafah': how AI-generated image swept across social media",
+        "author": "Dan Milmo and Nadeem Badshah",
+        "date": "2024-05-30",
+        "url": "https://www.theguardian.com/world/article/2024/may/30/all-eyes-on-rafah-how-ai-generated-image-spread-across-social-media"
+      }
+    ]
+  },
+  {
+    "id": "evt-2026-02-finji-tiktok-ads",
+    "title": "TikTok allegedly ran AI-modified Finji ads with racist stereotypes",
+    "date": "2026-02",
+    "platforms": ["TikTok"],
+    "platform_family": "TikTok",
+    "ai_involvement_type": "Actor",
+    "description": "Indie publisher Finji said TikTok altered its game ads with generative AI despite its AI ad settings being turned off. One reported output added a racist and sexualized stereotype to a character from Usual June. The incident blurs whether the relevant actor is the advertiser, the platform's ad-creation layer, or both at once.",
+    "harm_type_primary": "Hateful Content",
+    "harm_type_secondary": ["Fraud", "Other"],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Hateful content describes the output, but it does not capture the split authorship between advertiser inputs and platform-generated ad variants."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "The case does not present a coordinated-user or inauthentic-behavior pattern; the harmful transformation occurred inside the ad system."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Sponsored delivery affected exposure, but recommendation logic does not explain how the offensive content was created."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Ad-generation defaults, consent controls, and opt-out mechanisms are relevant, but current design-safety language does not cleanly assign responsibility when the platform authors the final ad variant."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The harmful output sits between user input and platform generation, exposing a responsibility gap in frameworks built around clearly human authorship.",
+    "sources": [
+      {
+        "publication": "Game Developer",
+        "title": "Tiktok refuses to axe racist AI-generated ads for Finji games",
+        "author": "Bryant Francis",
+        "date": "2026-02-20",
+        "url": "https://www.gamedeveloper.com/marketing/tiktok-refuses-to-axe-racist-ai-generated-ads-for-finji-games"
+      },
+      {
+        "publication": "GameSpot",
+        "title": "Game Publisher Claims TikTok Used AI To Alter Ads, Adding A Racist Stereotype",
+        "author": "Lan Pitts",
+        "date": "2026-02-20",
+        "url": "https://www.gamespot.com/articles/game-publisher-claims-tiktok-used-ai-to-alter-ads-adding-a-racist-stereotype/1100-6538317/"
+      }
+    ]
+  },
+  {
+    "id": "evt-2023-03-snap-my-ai",
+    "title": "Snapchat's My AI gave unsafe advice to a self-identified teen",
+    "date": "2023-03",
+    "platforms": ["Snapchat"],
+    "platform_family": "Snap",
+    "ai_involvement_type": "Actor",
+    "description": "Washington Post testing found that Snapchat's My AI chatbot, marketed as a safer youth-oriented assistant, would still advise a self-identified 15-year-old about masking the smell of alcohol and marijuana and would help with schoolwork in inappropriate ways. The episode framed users, including minors, as live test subjects for a product that was still behaviorally unstable. The harm emerged from the platform's own assistant rather than from peer-to-peer abuse.",
+    "harm_type_primary": "Endangerment",
+    "harm_type_secondary": ["Other"],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Endangerment captures the youth-safety risk, but the category assumes a user source rather than a platform assistant responding directly."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "There is no coordinated or account-based behavior pattern to moderate; the unsafe output is generated by the chatbot itself."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "The core harm is not ranking or feed amplification but unsafe conversational advice inside the product."
+      },
+      "design": {
+        "fit": "clean",
+        "reason": "Age-aware guardrails, escalation logic, and tighter refusal policies are direct product interventions that fit existing safety-by-design practice."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "The actor assumption is strained, but the failure is still tightly coupled to remediable guardrail and youth-safety design choices.",
+    "sources": [
+      {
+        "publication": "The Washington Post",
+        "title": "Snapchat tried to make a safe AI. It chats with me about booze and sex.",
+        "author": "Geoffrey A. Fowler",
+        "date": "2023-03-14",
+        "url": "https://www.washingtonpost.com/technology/2023/03/14/snapchat-myai/"
+      }
+    ]
+  }
+]

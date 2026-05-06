@@ -1,0 +1,47 @@
+{
+  "Endangerment_Platform-Generated": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Endangerment, placing it alongside familiar child-safety or self-harm cases that presume a human speaker or uploader.",
+    "actorInsight": "Adding actor-axis coding Platform-Generated surfaces that the proximate producer of harm is the platform's own conversational or generative layer, which ordinary user enforcement does not reach.",
+    "recommendedResponse": "model governance"
+  },
+  "Dangerous Misinformation_Platform-Generated": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Dangerous Misinformation, placing it alongside false election, health, or crisis information shared by ordinary users.",
+    "actorInsight": "Adding actor-axis coding Platform-Generated shows that the misleading content originated in the platform's own assistant or answer layer, not in user speech alone.",
+    "recommendedResponse": "model governance"
+  },
+  "Dangerous Misinformation_Recommender-Amplified": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Dangerous Misinformation, placing it near other synthetic-media or misleading-context cases.",
+    "actorInsight": "Adding actor-axis coding Recommender-Amplified surfaces that the principal risk comes from scale and visibility decisions, not just from the original creation of the content.",
+    "recommendedResponse": "recommender accountability"
+  },
+  "Hateful Content_Hybrid-Agency": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Hateful Content, placing it alongside racist or discriminatory content posted by users or advertisers.",
+    "actorInsight": "Adding actor-axis coding Hybrid-Agency reveals split authorship: user-supplied inputs or assets are transformed by a platform generation system into the final harmful output.",
+    "recommendedResponse": "taxonomy refinement"
+  },
+  "Endangerment_Hybrid-Agency": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Endangerment, grouping it with cases where a user directly encourages unsafe behavior.",
+    "actorInsight": "Adding actor-axis coding Hybrid-Agency clarifies that the unsafe output emerged from an interaction between user prompting and platform generation rather than from either side alone.",
+    "recommendedResponse": "taxonomy refinement"
+  },
+  "Privacy Violation_Design-Layer": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Privacy Violation, placing it near doxxing or disclosure cases handled through content takedowns.",
+    "actorInsight": "Adding actor-axis coding Design-Layer surfaces that the platform's interface, defaults, or disclosure architecture enabled the violation before any specific abusive post appeared.",
+    "recommendedResponse": "design intervention"
+  },
+  "Impersonation_User-Assisted-by-AI": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Impersonation, placing it alongside fake-account and identity-fraud cases.",
+    "actorInsight": "Adding actor-axis coding User-Assisted-by-AI shows that a human actor remains central, but AI materially lowers the cost and raises the scale or realism of the deception.",
+    "recommendedResponse": "taxonomy refinement"
+  },
+  "Fraud_User-Assisted-by-AI": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Fraud, placing it near scams and confidence tricks that target users for money or sensitive information.",
+    "actorInsight": "Adding actor-axis coding User-Assisted-by-AI makes visible how AI augments persuasion, targeting, or message production even when a user remains the principal wrongdoer.",
+    "recommendedResponse": "taxonomy refinement"
+  },
+  "Sexualized Abuse_Platform-Generated": {
+    "harmOnly": "Under harm-axis coding alone, this event would be classified as Sexualized Abuse, grouping it with explicit or exploitative content created by users.",
+    "actorInsight": "Adding actor-axis coding Platform-Generated surfaces that the platform's own model behavior is generating the abusive material, shifting the policy question toward system design and deployment governance.",
+    "recommendedResponse": "model governance"
+  }
+}
