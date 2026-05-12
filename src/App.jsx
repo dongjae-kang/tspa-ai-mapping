@@ -208,7 +208,6 @@ function App() {
           <p>
             Site infrastructure built with assistance from ChatGPT Codex; dataset
             construction, framework-mapping coding, and analytical framework are author work.
-            The author is solely responsible for any errors.
           </p>
         </div>
       </footer>
