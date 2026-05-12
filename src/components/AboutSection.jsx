@@ -30,8 +30,14 @@ function AboutSection() {
             DongJae Kang | Principles and Practice of Online Trust &amp; Safety (TPIN7008IA),
             Columbia University SIPA, Spring 2026 | Instructor: Professor Tim Bernard
           </p>
-          <a href={PAPER_PDF_URL} className="paper-link">
-            Paper PDF (placeholder)
+          <a
+            href={PAPER_PDF_URL}
+            className="paper-link"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open paper PDF in browser viewer"
+          >
+            View paper PDF
           </a>
         </div>
       </div>
