@@ -5,7 +5,7 @@ export const FRAMEWORK_ROWS = [
   { key: 'design', label: 'Design-level safety' },
 ];
 
-export const PAPER_PDF_URL = '#paper'; // Replace with final docx/pdf URL before submission.
+export const PAPER_PDF_URL = `${import.meta.env.BASE_URL}paper/ai-era-ts-framework-mapping-paper.pdf`;
 
 export const FIT_LABELS = {
   clean: 'Clean',
