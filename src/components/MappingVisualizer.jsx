@@ -34,7 +34,7 @@ function MappingVisualizer({
         <div className="section-heading">
           <div>
             <p className="eyebrow">Section 1</p>
-            <h2>Mapping Visualizer</h2>
+            <h2>Framework Mapping Visualizer</h2>
           </div>
           <p className="section-summary">
             Browse the event dataset and inspect how each case maps onto the TSPA taxonomy,

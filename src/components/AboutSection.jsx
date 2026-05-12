@@ -1,3 +1,5 @@
+import { PAPER_PDF_URL } from '../lib/site.js';
+
 function AboutSection() {
   return (
     <section id="about" className="about-section">
@@ -28,7 +30,7 @@ function AboutSection() {
             DongJae Kang | Principles and Practice of Online Trust &amp; Safety (TPIN7008IA),
             Columbia University SIPA, Spring 2026 | Instructor: Professor Tim Bernard
           </p>
-          <a href="#paper" className="paper-link">
+          <a href={PAPER_PDF_URL} className="paper-link">
             Paper PDF (placeholder)
           </a>
         </div>
