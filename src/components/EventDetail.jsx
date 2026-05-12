@@ -30,6 +30,9 @@ function DetailHeader({ event }) {
         <p>
           <strong>AI involvement type:</strong> {event.ai_involvement_type}
         </p>
+        <p>
+          <strong>Primary harm type:</strong> {event.harm_type_primary}
+        </p>
       </div>
     </header>
   );

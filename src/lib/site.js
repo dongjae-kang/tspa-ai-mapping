@@ -5,6 +5,8 @@ export const FRAMEWORK_ROWS = [
   { key: 'design', label: 'Design-level safety' },
 ];
 
+export const PAPER_PDF_URL = '#paper'; // Replace with final docx/pdf URL before submission.
+
 export const FIT_LABELS = {
   clean: 'Clean',
   partial: 'Partial',
