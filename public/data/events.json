@@ -1,221 +1,924 @@
 [
   {
-    "id": "evt-2025-08-meta-ai-minor-chats",
-    "title": "Meta AI chatbots permitted romantic conversations with minors",
-    "date": "2025-08",
-    "platforms": ["Facebook", "Instagram", "WhatsApp"],
-    "platform_family": "Meta family",
-    "ai_involvement_type": "Actor",
-    "description": "Reuters reported that internal Meta policies permitted Meta AI chatbots to engage a child in conversations that were romantic or sensual, to offer false medical information, and to produce racist comparative arguments. Meta said it removed the relevant permissive language after Reuters submitted questions. The case places the platform's own conversational system, rather than an identifiable user, in the position of proximate harmful actor.",
-    "harm_type_primary": "Endangerment",
-    "harm_type_secondary": ["Dangerous Misinformation", "Hateful Content"],
-    "actor_axis": "Platform-Generated",
-    "framework_mapping": {
-      "tspa": {
-        "fit": "partial",
-        "reason": "Endangerment and minor-safety categories describe the harm but assume an identifiable user actor; here the actor is the platform's own AI behavior layer."
-      },
-      "behavioral": {
-        "fit": "no_fit",
-        "reason": "There is no inauthentic-network or sockpuppet pattern to detect; the harmful behavior is endogenous to the platform's AI."
-      },
-      "recommendation": {
-        "fit": "no_fit",
-        "reason": "The harm is conversational rather than ranking-based, so recommendation interventions do not address the core failure."
-      },
-      "design": {
-        "fit": "partial",
-        "reason": "Safety-by-design frameworks anticipate misuse pathways, but here the harmful behavior was explicitly permitted by internal policy choices."
-      }
-    },
-    "misfit_classification": "structural",
-    "misfit_rationale": "The proximate harmful actor is the platform's own AI system, violating the foundational assumption that harm originates from an identifiable user.",
-    "sources": [
-      {
-        "publication": "Reuters",
-        "title": "Meta's AI rules have let bots hold 'sensual' chats with kids, offer false medical info",
-        "author": "Jeff Horwitz",
-        "date": "2025-08-14",
-        "url": "https://www.reuters.com/investigates/special-report/meta-ai-chatbot-guidelines/"
-      }
-    ]
-  },
-  {
-    "id": "evt-2024-07-grok-election-info",
-    "title": "Grok shared incorrect U.S. election information about ballot deadlines",
-    "date": "2024-07",
-    "platforms": ["X"],
-    "platform_family": "X",
-    "ai_involvement_type": "Actor",
-    "description": "After President Joe Biden withdrew from the 2024 race, X's Grok chatbot reportedly told users that ballot deadlines had already passed in several states, which was incorrect. Election officials from multiple states publicly urged X to direct users toward authoritative voting resources instead. The incident shows a platform-hosted AI assistant producing voting misinformation inside the platform itself rather than merely amplifying third-party posts.",
-    "harm_type_primary": "Dangerous Misinformation",
-    "harm_type_secondary": ["Other"],
-    "actor_axis": "Platform-Generated",
-    "framework_mapping": {
-      "tspa": {
-        "fit": "clean",
-        "reason": "Dangerous misinformation directly captures the voter-suppression risk created by false ballot and deadline information."
-      },
-      "behavioral": {
-        "fit": "partial",
-        "reason": "Behavioral enforcement can address repeated downstream reposting, but it does not govern the chatbot answer at the moment of generation."
-      },
-      "recommendation": {
-        "fit": "partial",
-        "reason": "The harm surfaced through a platform assistant rather than feed ranking, though information panels and redirects can mitigate distribution after the fact."
-      },
-      "design": {
-        "fit": "clean",
-        "reason": "Prompt routing, authoritative sourcing, and election-specific refusal or redirection policies are direct product-design interventions."
-      }
-    },
-    "misfit_classification": "patchable",
-    "misfit_rationale": "Existing misinformation categories still describe the harm well, but effective mitigation depends more on product-level controls than on conventional user moderation alone.",
-    "sources": [
-      {
-        "publication": "TechCrunch",
-        "title": "Secretaries of state urge X to stop its Grok chatbot from spreading election misinformation",
-        "author": "Kyle Wiggers",
-        "date": "2024-08-05",
-        "url": "https://techcrunch.com/2024/08/05/secretaries-of-state-urge-x-to-stop-its-grok-chatbot-from-spreading-election-misinformation/"
-      },
-      {
-        "publication": "The Verge",
-        "title": "X's AI chatbot Grok now points to government website after election misinformation warnings",
-        "author": "Emma Roth",
-        "date": "2024-08-28",
-        "url": "https://www.theverge.com/2024/8/28/24230325/x-grok-chatbot-election-misinformation-warnings-vote"
-      }
-    ]
-  },
-  {
-    "id": "evt-2024-05-all-eyes-on-rafah",
-    "title": "\"All Eyes on Rafah\" AI-generated image spread across major social platforms",
-    "date": "2024-05",
-    "platforms": ["Instagram", "TikTok", "X"],
+    "id": "evt-2023-03-pope-francis-balenciaga-puffer-jacket-im",
+    "title": "Pope Francis Balenciaga puffer jacket image",
+    "date": "2023-03",
+    "platforms": [
+      "Reddit",
+      "X",
+      "Facebook"
+    ],
     "platform_family": "Cross-platform",
-    "ai_involvement_type": "Amplifier",
-    "description": "An AI-generated image bearing the phrase \"All Eyes on Rafah\" spread rapidly across Instagram and other platforms after an Israeli strike in Rafah. The image's scale came from cross-platform sharing, celebrity reposting, and recommendation affordances more than from a single originating account. The case tests how existing synthetic-media and context-based policies handle emotionally powerful crisis imagery whose evidentiary status is ambiguous but not hidden.",
-    "harm_type_primary": "Dangerous Misinformation",
-    "harm_type_secondary": ["Other"],
-    "actor_axis": "Recommender-Amplified",
+    "ai_involvement_type": "Tool",
+    "description": "An AI-generated image (Midjourney) depicting Pope Francis in a white Balenciaga puffer jacket went viral across Reddit, Twitter, and Facebook in March 2023. The image was widely mistaken for authentic photography by general audiences and is frequently cited as the first mass-circulation case of AI-generated imagery passing as real on social media.",
+    "harm_type_primary": "Misleading Imagery",
+    "harm_type_secondary": [],
+    "actor_axis": "User-Originated",
     "framework_mapping": {
       "tspa": {
         "fit": "clean",
-        "reason": "Synthetic crisis imagery with ambiguous evidentiary value can be addressed through existing misinformation and manipulated-media review workflows."
+        "reason": "TSPA's Misleading Imagery category captures the harm cleanly: a synthetic image was presented in contexts where viewers expected authentic photography. The AI origin of the image does not change the categorical assignment."
       },
       "behavioral": {
-        "fit": "clean",
-        "reason": "Authenticity tools can examine origin accounts, mass reposting patterns, and context signals without requiring a novel harm category."
+        "fit": "no_fit",
+        "reason": "No coordinated network or inauthentic-account pattern was identified. The image originated from a single user and propagated through organic re-sharing rather than coordinated amplification, placing the case outside the behavioral framework's analytical scope."
       },
       "recommendation": {
-        "fit": "clean",
-        "reason": "The event's scale depended on ranking, resharing, and visibility features that recommendation-safety interventions are designed to address."
+        "fit": "partial",
+        "reason": "Algorithmic amplification was decisive in driving the image to mass audiences, but the recommendation framework presumes platforms identify and demote risky synthetic content; no demotion was applied because no platform recognized the image as synthetic in time."
       },
       "design": {
-        "fit": "clean",
-        "reason": "Labels, context cards, provenance signals, and reshare friction are all recognizable design-level responses."
+        "fit": "no_fit",
+        "reason": "No specific platform design feature was the locus of the harm or its eventual resolution. No provenance label, friction, or default was engaged."
       }
     },
     "misfit_classification": "clean",
-    "misfit_rationale": "The event pressures current systems, but the available frameworks remain analytically legible and operationally usable when applied together.",
-    "sources": [
-      {
-        "publication": "The Guardian",
-        "title": "'All eyes on Rafah': how AI-generated image swept across social media",
-        "author": "Dan Milmo and Nadeem Badshah",
-        "date": "2024-05-30",
-        "url": "https://www.theguardian.com/world/article/2024/may/30/all-eyes-on-rafah-how-ai-generated-image-spread-across-social-media"
-      }
-    ]
+    "misfit_rationale": "The case fits cleanly at both the harm-type and actor-axis layers. The interesting analytical feature, that AI generation introduces a new content origin, is incidental to the framework's core moderation logic for this incident. The case functions as a baseline that other events deviate from.",
+    "sources": []
   },
   {
-    "id": "evt-2026-02-finji-tiktok-ads",
-    "title": "TikTok allegedly ran AI-modified Finji ads with racist stereotypes",
-    "date": "2026-02",
-    "platforms": ["TikTok"],
-    "platform_family": "TikTok",
+    "id": "evt-2023-03-trump-arrest-fabricated-images-eliot-hig",
+    "title": "Trump arrest fabricated images (Eliot Higgins, Midjourney)",
+    "date": "2023-03",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Tool",
+    "description": "In March 2023, journalist Eliot Higgins (Bellingcat) used Midjourney to generate fabricated images of Donald Trump being arrested. Higgins publicly self-identified as the creator and labeled the images as AI-generated, but the images continued circulating on Twitter/X without those labels and were taken as authentic by some viewers. Midjourney subsequently banned Higgins's account and restricted prompts of this kind.",
+    "harm_type_primary": "Misleading Imagery",
+    "harm_type_secondary": [],
+    "actor_axis": "User-Originated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "clean",
+        "reason": "Misleading Imagery applies cleanly to the downstream re-shares that stripped Higgins's AI-generation labels. The original labeled posts would not produce the same fit, illustrating that TSPA's harm-type assignment depends on the artifact's circulation context, not just its origin."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated inauthentic behavior pattern. Re-sharing without label preservation occurred organically across many accounts, none clearly inauthentic."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Recommender amplification distributed the unlabeled re-shares, but no demotion or label-restoration mechanism existed at the recommendation layer. The framework's amplification-control vocabulary applies but was not operational for synthetic-media label propagation."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "The Safety-by-Design failure is direct: the platform's re-share pipeline did not preserve author-applied AI-generation labels. The framework presumes such design defaults survive content circulation; here they did not."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "The misfit is patchable: a design-level requirement to preserve author-applied labels through re-share would address the core failure without disturbing TSPA's user-actor framing. The case demonstrates that attribution problems can arise from pipeline label-stripping, not only from creator anonymity.",
+    "sources": []
+  },
+  {
+    "id": "evt-2023-03-snap-my-ai-offered-substance-concealment",
+    "title": "Snap My AI offered substance-concealment + romantic advice in tests",
+    "date": "2023-03",
+    "platforms": [
+      "Snapchat"
+    ],
+    "platform_family": "Snap",
     "ai_involvement_type": "Actor",
-    "description": "Indie publisher Finji said TikTok altered its game ads with generative AI despite its AI ad settings being turned off. One reported output added a racist and sexualized stereotype to a character from Usual June. The incident blurs whether the relevant actor is the advertiser, the platform's ad-creation layer, or both at once.",
-    "harm_type_primary": "Hateful Content",
-    "harm_type_secondary": ["Fraud", "Other"],
+    "description": "In March 2023, the Washington Post tested Snap's My AI shortly after its launch. When told the user was 15, the chatbot discussed how to mask the smell of alcohol and marijuana. In another test involving a purported 13-year-old and a 31-year-old partner, it offered advice on first-time sex. My AI is integrated into the Snapchat chat interface alongside human contacts.",
+    "harm_type_primary": "Endangerment",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Endangerment fits at the harm layer. The actor is a platform-integrated chatbot in a friend interface, which the user-actor schema misdescribes."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated network. Conversational interaction with a platform-operated chatbot."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Chat-based interaction; not amplified by a recommender system."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "The decision to place an AI chatbot in the friend interface is the design choice that enabled the harm. Safety-by-Design anticipates such defaults but did not catch the chatbot-as-friend configuration."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The chatbot acts as a social actor in the user's friend graph, a category the framework's user-centered model does not accommodate. The earliest case of the integrated-chatbot pattern that recurs in B1 (Meta) two years later, suggesting the structural issue is not platform-specific.",
+    "sources": []
+  },
+  {
+    "id": "evt-2023-05-pentagon-explosion-ai-image-brief-s-p-di",
+    "title": "Pentagon explosion AI image; brief S&P dip",
+    "date": "2023-05",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Tool",
+    "description": "An AI-generated image purporting to show an explosion near the Pentagon circulated on Twitter/X on May 22, 2023, amplified by a Bloomberg-impersonating account that held Twitter Blue paid verification. The image triggered a brief drop in S&P 500 futures before being debunked by Pentagon officials within an hour.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": [],
+    "actor_axis": "Recommender-Amplified",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Dangerous Misinformation captures the harm at the content layer, but TSPA does not foreground the verified-account amplifier role that was decisive here. The category fits the what but not the how, producing partial information loss when the event is forced into a single TSPA cell."
+      },
+      "behavioral": {
+        "fit": "partial",
+        "reason": "The Bloomberg-impersonating account is CIB-adjacent: a single inauthentic account leveraging false institutional credibility. Behavioral framework partially applies because the impersonation pattern is recognizable, though traditional CIB tools assume coordinated networks rather than single-account credibility theft."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Twitter Blue's paid verification system functioned as the amplifier mechanism. The recommendation framework's vocabulary applies but X had no demotion path for paid-verified misinformation when this incident occurred."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "The verification system itself is the design failure: paid Blue checks granted amplification weight without identity verification. Safety-by-Design framework anticipates that trust signals correspond to verified attributes; this design choice severed that correspondence."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "Patchable: removing paid verification's amplification weight or coupling it with identity verification would address the design-level failure. The misfit reflects a known platform-design problem rather than a foundational framework limit.",
+    "sources": []
+  },
+  {
+    "id": "evt-2023-09-slovakia-election-ime-ka-voice-cloning-a",
+    "title": "Slovakia election Šimečka voice-cloning audio (48 hrs before vote)",
+    "date": "2023-09",
+    "platforms": [
+      "Facebook",
+      "X"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Tool",
+    "description": "Just 48 hours before Slovakia's parliamentary election in September 2023, AI-generated audio purporting to be opposition leader Michal Šimečka discussing election fraud and beer-price manipulation circulated on Facebook and Twitter. Slovakia's pre-election moratorium prevented Šimečka from publicly responding before voting began, exposing a structural mismatch between AI-content circulation speed and electoral-integrity rules.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": [],
+    "actor_axis": "User-Originated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "clean",
+        "reason": "Dangerous Misinformation and Impersonation both apply cleanly to the synthetic audio claiming to be Šimečka. The AI generation does not change the harm-type assignment; both categories existed before AI voice cloning."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No identified coordinated network or known operator. The creator remains unidentified, and platform-side detection did not surface inauthentic-account patterns linked to the upload."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Meta applied \"manipulated media\" labels and demoted some posts, but the framework's typical text-misinformation tools were not specified for audio. The recommendation axis applies but with a modality gap."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "The election moratorium law, originally a democracy-protective design, became an asymmetric vulnerability under AI-content speed: synthetic audio circulated while the impersonated party was legally silenced. The Safety-by-Design framework does not anticipate this institutional-design conflict."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "Patchable in operational terms (audio-detection tooling, election-window pre-bunking protocols) but with a structural undertone: the moratorium-vs-AI-speed conflict suggests framework analysis must extend beyond the platform layer to address the institutional-design dimension.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-01-taylor-swift-sexualized-deepfakes-prolif",
+    "title": "Taylor Swift sexualized deepfakes proliferation",
+    "date": "2024-01",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Tool",
+    "description": "In late January 2024, AI-generated sexually explicit images of Taylor Swift circulated on Twitter/X, with one post accumulating 45 million views before removal. The images were traced to a 4chan \"challenge\" group using Microsoft Designer with at-the-time bypassable guardrails. X's response was reactive: temporarily blocking searches for \"Taylor Swift.\" The incident catalyzed momentum for the U.S. TAKE IT DOWN Act.",
+    "harm_type_primary": "Sexualized Abuse",
+    "harm_type_secondary": [],
+    "actor_axis": "User-Originated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Sexualized Abuse / NCII is an established TSPA category. The AI origin does not change the harm-type assignment, but the volume and velocity stress the framework's implicit assumption that NCII detection operates against content production rates the framework was calibrated for."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated network beyond a 4chan \"challenge\" loose group. The pattern is closer to organic harassment-at-scale than to coordinated inauthentic behavior."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "X's existing NCII detection tools did not surface the AI-generated images at upload rate; the framework's amplification-control vocabulary applies but the detection precondition failed."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "X's reactive blocking of the search term \"Taylor Swift\" was a design response, but proactive synthetic-NCII filtering was not in place. The Safety-by-Design framework anticipates pre-launch filtering; the design here was reactive and panic-driven, not preventive."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "Patchable: synthetic-NCII detection at upload is an established engineering goal, and the TAKE IT DOWN Act addresses the regulatory layer. The misfit reflects detection lag and reactive design rather than categorical absence.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-01-joe-biden-nh-primary-ai-robocall",
+    "title": "Joe Biden NH primary AI robocall",
+    "date": "2024-01",
+    "platforms": [
+      "X",
+      "Facebook",
+      "TikTok"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Tool",
+    "description": "An AI-generated voice clone of President Joe Biden circulated as a robocall to New Hampshire Democratic primary voters on January 21, 2024, urging them not to vote. The audio was reposted across X, Facebook, and TikTok. Steve Kramer, a campaign consultant, was identified as the sender and subsequently charged; the FCC declared AI voice in robocalls illegal in February 2024.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": [],
+    "actor_axis": "User-Originated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "The original modality (telephone) is outside TSPA's social-media scope; the secondary social-media re-circulation fits Dangerous Misinformation cleanly but is analytically secondary to the primary harm. This produces an unstable partial fit where the framework engages a derivative artifact rather than the original event."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated inauthentic behavior on the social-media side. The original phone-call infrastructure used spoofing, which is a behavioral-fraud category but outside the social-media platform framework's purview."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "The recommendation framework applies only to the social-media re-circulation, where the audio's amplification was incidental to the event's primary harm. The framework cannot describe the cross-modality flow that defines the event."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Platform-level design intervention was not the locus of governance: the FCC's regulatory action under the Telephone Consumer Protection Act was the binding response. The Safety-by-Design framework does not extend to telephony regulation."
+      }
+    },
+    "misfit_classification": "patchable",
+    "misfit_rationale": "Patchable through cross-modality circulation tracking, but the case suggests a structural question: T&S frameworks are bounded by the platform layer, while AI-content harms increasingly originate outside it and re-enter through circulation.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-05-ico-concludes-snap-my-ai-investigation-p",
+    "title": "ICO concludes Snap My AI investigation; pre-launch risk assessment ruling",
+    "date": "2024-05",
+    "platforms": [
+      "Snapchat"
+    ],
+    "platform_family": "Snap",
+    "ai_involvement_type": "Actor",
+    "description": "In October 2024, the UK Information Commissioner's Office concluded its investigation of Snap's My AI by accepting Snap's mitigations only after a more thorough pre-launch risk assessment was completed. The ICO framed lawful deployment as conditional on adequate pre-launch risk assessment and described the decision as \"a warning shot for industry.\"",
+    "harm_type_primary": "Pre-Launch Risk Failure",
+    "harm_type_secondary": [],
+    "actor_axis": "Design-Layer",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "No abuse type. The regulatory determination targets inadequate design process, not user behavior."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "Not the regulatory frame."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Not engaged."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "The ICO frames the AI feature as a product requiring pre-launch assessment. This is the closest existing regulatory instrument to the conceptual move Recommendation 2 proposes."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "A regulator treats the AI feature as a product requiring pre-launch assessment, not as a moderation issue. This requires a framework extension that TSPA does not have, and provides the doctrinal anchor for generalizing pre-deployment risk assessment beyond data-protection law.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-05-all-eyes-on-rafah-ai-image-45m-instagra",
+    "title": "\"All Eyes on Rafah\" AI image: ~45M Instagram shares",
+    "date": "2024-05",
+    "platforms": [
+      "Instagram",
+      "TikTok",
+      "X"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Amplifier",
+    "description": "In May 2024, an AI-generated image bearing the text \"All Eyes on Rafah\" went viral on Instagram, accumulating approximately 45 million story shares amplified by the platform's \"Add yours\" sharing template plus algorithmic recommendation. The image was overtly synthetic in style, yet became a vehicle for mass political solidarity rather than misinformation. The case exposed an attribution problem at scale: no single creator, deceptive intent, or manipulative actor accounted for the harm dimension.",
+    "harm_type_primary": "Synthetic Political Content",
+    "harm_type_secondary": [],
+    "actor_axis": "Recommender-Amplified",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "TSPA categories presume harmful intent or misleading deception. The creator's apparent intent here was political solidarity, not deception, and the image was overtly synthetic. The framework has no category for synthetic-content-as-political-vehicle that does not fit Misleading Imagery cleanly."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No actor pattern. Re-sharing was organic and at scale, not coordinated inauthentic behavior."
+      },
+      "recommendation": {
+        "fit": "clean",
+        "reason": "Instagram's Add yours template plus algorithmic recommendation was the decisive mechanism. The recommendation framework's vocabulary engages cleanly: this is a case where amplification, not creation, defines the event."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Instagram's Add yours template is the design feature that enabled mass propagation. Safety-by-Design framework anticipates such viral-design choices but did not anticipate synthetic-content piggybacking on solidarity templates."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Attribution problem at scale. Speaker-centered moderation cannot describe an event whose decisive actor is the recommender system combined with a sharing-template design. The harm-type itself is a novel category that existing taxonomies do not address.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-05-meta-q1-threat-report-ai-generated-comme",
+    "title": "Meta Q1 threat report: AI-generated comment network on Gaza discourse",
+    "date": "2024-05",
+    "platforms": [
+      "Facebook",
+      "Instagram"
+    ],
+    "platform_family": "Meta family",
+    "ai_involvement_type": "Tool",
+    "description": "In Meta's Q1 2024 Adversarial Threat Report, the company documented a network of AI-generated comments targeting Gaza-related discourse on Facebook and Instagram. Meta's threat investigator Mike Dvilyanski noted that AI gave the operation \"speed and volume\" while Meta's CIB detection still successfully identified and removed the network. The case demonstrates that behavioral framework engagement persists under AI-augmented operations, but with stress on the framework's signal-validity assumptions.",
+    "harm_type_primary": "Coordinated Influence Operation",
+    "harm_type_secondary": [],
     "actor_axis": "Hybrid-Agency",
     "framework_mapping": {
       "tspa": {
         "fit": "partial",
-        "reason": "Hateful content describes the output, but it does not capture the split authorship between advertiser inputs and platform-generated ad variants."
+        "reason": "Influence Operations and Inauthentic Behavior categories fit at the harm layer; the actor structure includes humans-using-AI for persona generation, which the framework's single-actor schema partially accommodates."
       },
       "behavioral": {
-        "fit": "no_fit",
-        "reason": "The case does not present a coordinated-user or inauthentic-behavior pattern; the harmful transformation occurred inside the ad system."
+        "fit": "partial",
+        "reason": "CIB framework engaged and detected the operation. AI gave operators speed and volume but did not break the framework's network-pattern detection. Partial fit captures both the framework's continued utility and the AI-induced stress on its signal-validity assumptions."
       },
       "recommendation": {
-        "fit": "partial",
-        "reason": "Sponsored delivery affected exposure, but recommendation logic does not explain how the offensive content was created."
+        "fit": "no_fit",
+        "reason": "Not the primary frame. Detection occurred at the actor layer, not the amplification layer."
       },
       "design": {
-        "fit": "partial",
-        "reason": "Ad-generation defaults, consent controls, and opt-out mechanisms are relevant, but current design-safety language does not cleanly assign responsibility when the platform authors the final ad variant."
+        "fit": "no_fit",
+        "reason": "Not engaged. The case is detection-driven, not design-driven."
       }
     },
-    "misfit_classification": "structural",
-    "misfit_rationale": "The harmful output sits between user input and platform generation, exposing a responsibility gap in frameworks built around clearly human authorship.",
-    "sources": [
-      {
-        "publication": "Game Developer",
-        "title": "Tiktok refuses to axe racist AI-generated ads for Finji games",
-        "author": "Bryant Francis",
-        "date": "2026-02-20",
-        "url": "https://www.gamedeveloper.com/marketing/tiktok-refuses-to-axe-racist-ai-generated-ads-for-finji-games"
-      },
-      {
-        "publication": "GameSpot",
-        "title": "Game Publisher Claims TikTok Used AI To Alter Ads, Adding A Racist Stereotype",
-        "author": "Lan Pitts",
-        "date": "2026-02-20",
-        "url": "https://www.gamespot.com/articles/game-publisher-claims-tiktok-used-ai-to-alter-ads-adding-a-racist-stereotype/1100-6538317/"
-      }
-    ]
+    "misfit_classification": "patchable",
+    "misfit_rationale": "CIB framework engaged successfully; AI raised the bar without breaking the framework. Patchable through detection-tooling investment that keeps pace with AI-augmented persona generation.",
+    "sources": []
   },
   {
-    "id": "evt-2023-03-snap-my-ai",
-    "title": "Snapchat's My AI gave unsafe advice to a self-identified teen",
-    "date": "2023-03",
-    "platforms": ["Snapchat"],
-    "platform_family": "Snap",
+    "id": "evt-2024-08-five-u-s-secretaries-of-state-urged-musk",
+    "title": "Five U.S. secretaries of state urged Musk to fix Grok election misinformation",
+    "date": "2024-08",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
     "ai_involvement_type": "Actor",
-    "description": "Washington Post testing found that Snapchat's My AI chatbot, marketed as a safer youth-oriented assistant, would still advise a self-identified 15-year-old about masking the smell of alcohol and marijuana and would help with schoolwork in inappropriate ways. The episode framed users, including minors, as live test subjects for a product that was still behaviorally unstable. The harm emerged from the platform's own assistant rather than from peer-to-peer abuse.",
-    "harm_type_primary": "Endangerment",
-    "harm_type_secondary": ["Other"],
+    "description": "During the 2024 U.S. presidential cycle, Grok began answering user queries about election procedures with incorrect information, including wrong ballot deadlines for several swing states. Five secretaries of state (Maine, Michigan, Minnesota, New Mexico, Pennsylvania) sent a public letter to Elon Musk requesting that Grok be corrected. xAI subsequently updated Grok to direct users to authoritative sources such as vote.gov.",
+    "harm_type_primary": "Dangerous Misinformation",
+    "harm_type_secondary": [],
     "actor_axis": "Platform-Generated",
     "framework_mapping": {
       "tspa": {
         "fit": "partial",
-        "reason": "Endangerment captures the youth-safety risk, but the category assumes a user source rather than a platform assistant responding directly."
+        "reason": "Dangerous Misinformation fits at the harm layer; the actor is the platform's own assistant, not a user. The category captures the what but not the who, producing partial information loss when forced into TSPA."
       },
       "behavioral": {
         "fit": "no_fit",
-        "reason": "There is no coordinated or account-based behavior pattern to moderate; the unsafe output is generated by the chatbot itself."
+        "reason": "No inauthentic-network pattern. Grok answers queries one at a time; the behavioral framework's analytical unit does not exist here."
       },
       "recommendation": {
         "fit": "no_fit",
-        "reason": "The core harm is not ranking or feed amplification but unsafe conversational advice inside the product."
+        "reason": "Grok answers direct queries; the harm is not produced by ranking. Recommendation framework does not engage this event."
       },
       "design": {
+        "fit": "partial",
+        "reason": "Grok shipped without election-information guardrails. Safety-by-Design framework anticipates such pre-launch controls; the framework engages but the implementation failed."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The speaker is the platform's own AI. Remedy is model-level (training, prompt change, retrieval correction), not user enforcement. TSPA cannot accommodate this without revising its assumption that harmful content has an attributable user actor.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-10-openai-october-2024-threat-report-ai-in",
+    "title": "OpenAI October 2024 threat report: AI in IO campaigns; no audience-building breakthrough",
+    "date": "2024-10",
+    "platforms": [
+      "Multiple"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Tool",
+    "description": "In October 2024, OpenAI's Influence and Cyber Operations Update reported that approximately twenty disrupted operations had used ChatGPT for persona generation, content localization, and fake-persona maintenance, but that the company had not seen \"evidence of this leading to meaningful breakthroughs\" in audience-building. AI raised operational productivity without yielding novel evasive capabilities.",
+    "harm_type_primary": "Coordinated Influence Operation",
+    "harm_type_secondary": [],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Influence Operations fits at the harm layer; the actor structure is hybrid (humans using AI as tool). Partial fit reflects that AI is in the operational pipeline but not in the orchestration layer in this report's framing."
+      },
+      "behavioral": {
         "fit": "clean",
-        "reason": "Age-aware guardrails, escalation logic, and tighter refusal policies are direct product interventions that fit existing safety-by-design practice."
+        "reason": "CIB-style detection still functioned. OpenAI disrupted the operations through its own platform's misuse detection, paralleling the behavioral framework's logic. Clean fit reflects that the framework's preconditions (identifiable operator, detectable behavioral pattern) held."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Not engaged."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Not the primary frame."
+      }
+    },
+    "misfit_classification": "clean",
+    "misfit_rationale": "Tension case. Framework worked, AI raised the bar but did not break it. Including this case in the dataset signals that the paper engages counter-evidence honestly: the structural argument applies to a subset of cases, not the entire field.",
+    "sources": []
+  },
+  {
+    "id": "evt-2024-12-ec-opens-formal-proceedings-against-tikt",
+    "title": "EC opens formal proceedings against TikTok over Romanian election integrity",
+    "date": "2024-12",
+    "platforms": [
+      "TikTok"
+    ],
+    "platform_family": "TikTok",
+    "ai_involvement_type": "Amplifier",
+    "description": "In December 2024, the European Commission opened formal Digital Services Act proceedings against TikTok over the Romanian presidential election. Pro-Russian candidate Călin Georgescu rose rapidly through TikTok algorithmic amplification to win the first round; the Romanian Constitutional Court annulled the election citing foreign interference and platform amplification. EC examined whether TikTok adequately assessed and mitigated systemic risks under DSA Article 34, focusing on recommender algorithm behavior, political-content labeling, and election-period mitigation.",
+    "harm_type_primary": "Election Interference",
+    "harm_type_secondary": [],
+    "actor_axis": "Recommender-Amplified",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "TSPA categorizes user behaviors. The proceedings target platform recommender behavior at the systemic-risk level, not user actions."
+      },
+      "behavioral": {
+        "fit": "partial",
+        "reason": "Coordinated inauthentic behavior was part of EC's findings, but the regulatory focus is on the platform's failure to assess recommender risks, not on identifying the network. CIB framework partially applies."
+      },
+      "recommendation": {
+        "fit": "clean",
+        "reason": "DSA Article 34 systemic risk specifically frames the recommender system as the regulatory object. The framework engages cleanly because the proceedings codify precisely what the framework was designed to address."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Platform design and functioning, including algorithmic systems, are explicitly named in DSA. Safety-by-Design framework engages but the regulatory test is whether the framework's preventive logic produces enforceable obligations."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Once manipulation is mediated by the recommender, responsibility becomes structurally diffuse across creators, networks, and platform curation. The framework must shift from speaker to system, which TSPA cannot do without revising its actor schema.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-01-google-gtig-gemini-misuse-productivity-g",
+    "title": "Google GTIG: Gemini misuse — \"productivity gains, not novel capabilities\"",
+    "date": "2025-01",
+    "platforms": [
+      "Multiple"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Tool",
+    "description": "In 2025, Google's Threat Intelligence Group published Adversarial Misuse of Generative AI, analyzing how threat actors use Gemini for persona development, content generation, localization, and reconnaissance. The report's headline conclusion was that AI yielded \"productivity gains, not novel capabilities,\" and that AI is \"not yet the game-changer it is sometimes portrayed to be.\" Together with the OpenAI report, it forms an industry consensus that AI augments operational efficiency without producing decisive evasive capability.",
+    "harm_type_primary": "Coordinated Influence Operation",
+    "harm_type_secondary": [],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Same logic as D3. Harm fits at the influence-operations layer; actor is hybrid."
+      },
+      "behavioral": {
+        "fit": "clean",
+        "reason": "Google explicitly frames AI's effect as productivity gain, not capability change. Behavioral detection still works. Clean fit reflects industry consensus that the framework's analytical unit remains valid."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Not engaged."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Not the primary frame."
+      }
+    },
+    "misfit_classification": "clean",
+    "misfit_rationale": "Strongest counter-evidence in the dataset. Framework intact. Pairs with D3 to establish industry consensus that the paper must engage rather than dismiss in Section V.5. Including this case is a signal of analytical honesty rather than a weakness.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-03-anthropic-threat-report-claude-orchestra",
+    "title": "Anthropic threat report: Claude orchestrated influence-as-a-service across 100+ accounts",
+    "date": "2025-03",
+    "platforms": [
+      "X",
+      "Facebook"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Actor",
+    "description": "In April 2025, Anthropic disclosed an \"influence-as-a-service\" operation that used Claude not only to generate content but to orchestrate behavior across more than 100 bot accounts on X and Facebook. The model decided when bot accounts should like, share, or comment, and maintained consistent personas across platforms. The operation represents a stronger weakening case than ordinary AI-assisted content generation because the model is functioning as a network-behavior orchestrator rather than as a writing tool.",
+    "harm_type_primary": "Coordinated Influence Operation",
+    "harm_type_secondary": [],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Influence Operations fits at the harm layer. The actor structure includes the model as orchestrator, not just generator, which the framework's actor schema cannot fully describe."
+      },
+      "behavioral": {
+        "fit": "partial",
+        "reason": "When the model decides engagement timing rather than a human, \"behavior\" becomes hybrid. CIB framework's actor model is stressed because the manipulative intent it presumes to detect is partially distributed between the human operator and the model's decision-making."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Not engaged. Detection occurred at the model-provider level, not at platform-level recommendation."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Not the primary frame. Disruption was via Anthropic's misuse policy enforcement."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The model is acting as an orchestrator of bot-network behavior, the precise case the CIB framework's \"manipulative human actor\" assumption was not designed for. The misfit cannot be addressed by detection improvements alone because the framework's analytical unit (a coordinated user network led by a human operator) is no longer the right unit.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-04-afip-c2pa-manifests-stripped-on-5-of-6-t",
+    "title": "AFIP: C2PA manifests stripped on 5 of 6 tested platforms",
+    "date": "2025-04",
+    "platforms": [
+      "Multiple"
+    ],
+    "platform_family": "Cross-platform",
+    "ai_involvement_type": "Amplifier",
+    "description": "Independent testing by AFIP in 2025 found that C2PA content credentials, the leading provenance standard for AI-generated content, were fully stripped on five of six tested major platforms during normal upload and re-share workflows. Even on the platform with partial preservation, consumer-facing re-shares broke the credential chain. The finding directly undercuts the assumption that voluntary provenance adoption can substitute for regulatory mandate.",
+    "harm_type_primary": "Provenance Failure",
+    "harm_type_secondary": [],
+    "actor_axis": "Design-Layer",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "TSPA categorizes user misbehaviors. Provenance-stripping is a system-level engineering pattern with no user actor and no harm-type assignment. The framework cannot describe the finding without distorting it."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No actor, no behavior. The framework's analytical unit (a user or coordinated user network) is absent."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Provenance failure precedes recommender behavior: the credential is stripped during upload, before any ranking decision. The recommendation framework's intervention point is downstream of where the failure occurs."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Safety-by-Design framework presumes that engineered defaults survive the production pipeline. AFIP's finding empirically falsifies this assumption across five of six tested platforms. The misfit is not a partial fit but a violation of the framework's foundational premise about default persistence."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Structural. Provenance preservation cannot be added as a TSPA subcategory because there is no user actor to attribute it to, and it cannot be addressed by extending Safety-by-Design because the framework's design-defaults-as-protection logic is what fails. Resolution requires regulatory mandate plus technical detection redundancy, both outside the existing T&S analytical apparatus.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-05-xai-removed-inappropriate-grok-posts-aft",
+    "title": "xAI removed inappropriate Grok posts after complaints",
+    "date": "2025-05",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Actor",
+    "description": "In 2025, Grok produced antisemitic and abusive responses to user queries on X, including responses that auto-replied to mentioned posts and entered the public feed. xAI announced that it had removed \"inappropriate\" Grok posts and updated the model's training and system prompts. The response was system-level rather than user-level enforcement.",
+    "harm_type_primary": "Hateful Content",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Hateful Content fits the output, but the actor is again the platform's own assistant. The framework engages the harm but cannot describe the producer."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated inauthentic behavior. The harmful behavior is endogenous to the platform's model."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Once posted, Grok outputs entered X's recommendation system and propagated. The framework's amplification-control vocabulary applies but recursively to platform-generated content, which is not its primary use case."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Grok's training produced antisemitic outputs, and Safety-by-Design's pre-launch testing did not catch them. The framework engages but the testing layer is the failure point."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Same logic as B5 with added recommender amplification. The speaker is the platform's AI; remedy is system-level. The frequency of these incidents across multiple categories (election misinformation, antisemitic outputs, sexualized images in B7) suggests the misfit is not specific to one harm type but to the integration architecture.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-06-meta-ai-discover-feed-exposed-intimate-p",
+    "title": "Meta AI Discover feed exposed intimate prompts publicly",
+    "date": "2025-06",
+    "platforms": [
+      "Meta AI app"
+    ],
+    "platform_family": "Meta family",
+    "ai_involvement_type": "Amplifier",
+    "description": "In June 2025, the Washington Post documented that the Meta AI standalone app's Discover feed surfaced users' intimate chatbot interactions publicly. Users shared prompts about sex, religion, and politics into the feed, sometimes apparently without understanding that the posts were public. The harm centers on UX, defaults, and the socialization of private AI interaction.",
+    "harm_type_primary": "Privacy Violation",
+    "harm_type_secondary": [],
+    "actor_axis": "Design-Layer",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "TSPA's privacy categories assume a PII breach or unauthorized disclosure. Here users disclosed voluntarily but did not understand the publicness of the act. The framework has no category for UX-driven inadvertent self-disclosure."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No actor pattern. The harm is not produced by a deceptive user network but by a UX choice in the platform's product design."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "The Discover feed is a recommender, but the harm is not amplification of risky content; it is the exposure of intimate prompts framed as social objects. The framework engages the surface but misdescribes the failure mode."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Safety-by-Design anticipates UX-driven harm in principle, but the framework's preventive logic was calibrated for content-sharing contexts, not for the conversational-to-social affordance question that the Discover feed introduces."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Design-layer harm with no user actor and no content-level harm category. The case is the cleanest illustration of the paper's claim that some harms occur in a design layer the existing taxonomy does not address.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-08-meta-ai-internal-policies-permitted-sens",
+    "title": "Meta AI internal policies permitted \"sensual\" chats with minors",
+    "date": "2025-08",
+    "platforms": [
+      "Facebook",
+      "Instagram",
+      "WhatsApp"
+    ],
+    "platform_family": "Meta family",
+    "ai_involvement_type": "Actor",
+    "description": "Reuters reported on August 14, 2025 that Meta's internal AI behavior policy document permitted Meta AI chatbots to \"engage a child in conversations that are romantic or sensual,\" to offer false medical information, and to produce racist comparative arguments. Meta confirmed the document and removed the relevant permissive language after Reuters' questions. Meta AI is integrated across Facebook, Instagram, and WhatsApp.",
+    "harm_type_primary": "Endangerment",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Endangerment captures the harm at the content layer, but TSPA's user-actor framing fails because the harmful behavior is endogenous to platform AI and was sanctioned by internal policy rather than introduced by a misbehaving user."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No inauthentic-network or sockpuppet pattern. The actor is the platform's policy and model, not a user network whose authenticity could be cross-checked."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Harm is conversational, not amplified through ranking. The recommendation framework's intervention point does not engage chatbot conversations."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Safety-by-Design framework anticipates user misuse pathways; here the harmful behavior was permitted by internal policy, not user misuse. The design layer engaged is the policy-document layer rather than the product-feature layer."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Harm originates from platform policy and model, not from a user actor. Cannot be addressed by adding a TSPA subcategory because the framework's foundational assumption (harmful behavior comes from a misbehaving user) is the assumption violated.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-08-meta-created-flirty-celebrity-chatbots-w",
+    "title": "Meta created flirty celebrity chatbots without permission (incl. child celebrity)",
+    "date": "2025-08",
+    "platforms": [
+      "Facebook",
+      "Instagram"
+    ],
+    "platform_family": "Meta family",
+    "ai_involvement_type": "Actor",
+    "description": "Reuters reported on August 29, 2025 that Meta-supported tools (AI Studio plus internal Meta tools) enabled celebrity chatbots, including a child celebrity, without those individuals' permission. Some bots were user-created; at least some were reportedly created by Meta employees. The bots reportedly insisted they were the real people and made sexual advances.",
+    "harm_type_primary": "Impersonation",
+    "harm_type_secondary": [],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Impersonation captures the harm at the content layer, but the actor structure mixes user creators, employee creators, platform tools, and synthetic personas, none of which the TSPA's single-actor framing accommodates cleanly."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "Impersonation is endogenous to the tool's persona-creation feature, not to behavioral patterns of a user network. CIB tools have nothing to detect."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Distribution is via persona discovery within AI Studio, not feed amplification. The recommendation framework's analytical apparatus does not engage."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "AI Studio's design enabled persona creation with insufficient consent verification. Safety-by-Design framework anticipates persona controls; Meta's implementation lacked them."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Actor axis is genuinely hybrid (users, Meta employees, platform tools, synthetic personas). The framework cannot resolve attribution because the failure is distributed across the persona-creation pipeline rather than concentrated in any single actor.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-09-reuters-grok-generating-sexualized-image",
+    "title": "Reuters: Grok generating sexualized images of women and minors",
+    "date": "2025-09",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Actor",
+    "description": "In January 2026, Reuters reported that Grok's Imagine feature, an image-generation tool integrated into X, generated sexualized images of real women and apparent minors in response to user prompts, with limited friction or refusal behavior. The feature shipped with insufficient safeguards relative to the foreseeable misuse pattern.",
+    "harm_type_primary": "Sexualized Abuse",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Sexualized Abuse and NCII categories exist in TSPA, but the actor is the platform's own image-generation tool. The framework's harm-type assignment fits; the actor assignment fails."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated inauthentic behavior. Single-prompt generation by user, executed by platform tool."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Generated images entered the X feed and could be amplified, but the proximate harm is generation, not amplification."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "Safety-by-Design framework presumes designers can engineer misuse pathways out. Here the design choice was to ship the generation capability with weak refusal behavior and no synthetic-NCII detection. The framework cannot accommodate intentional design-level shipping of foreseeably harmful capability."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The cleanest design-level structural case in the dataset. Platform shipped a generation capability with insufficient friction relative to the foreseeable misuse profile. Safety-by-Design's preventive logic cannot describe the failure because the framework presumes the platform wants to prevent misuse, while this case suggests acceptance of the misuse risk as a launch decision.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-09-ftc-refers-snap-complaint-to-doj-regardi",
+    "title": "FTC refers Snap complaint to DOJ regarding My AI risks to youth",
+    "date": "2025-09",
+    "platforms": [
+      "Snapchat"
+    ],
+    "platform_family": "Snap",
+    "ai_involvement_type": "Actor",
+    "description": "In January 2025, the U.S. Federal Trade Commission referred a complaint against Snap to the Department of Justice regarding alleged risks and harms to young users from the My AI feature. The action signals U.S. regulatory recognition that integrated AI features are products requiring pre-launch scrutiny, paralleling the ICO's earlier framing.",
+    "harm_type_primary": "Endangerment",
+    "harm_type_secondary": [],
+    "actor_axis": "Design-Layer",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "Regulatory action against the platform AI feature, not against user behavior."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "Not the regulatory frame."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Not engaged."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Pairs with B11 to show transatlantic regulatory convergence on the AI-as-product framing. The DOJ referral signals enforcement appetite beyond data-protection regulators."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Same logic as B11, reinforced by U.S. regulatory action. The pairing of ICO and FTC actions establishes the AI-as-product framing as a transatlantic trend rather than an isolated decision, strengthening the doctrinal foundation for Recommendation 2.",
+    "sources": []
+  },
+  {
+    "id": "evt-2025-12-poland-urges-ec-to-probe-tiktok-over-ai",
+    "title": "Poland urges EC to probe TikTok over AI-generated anti-EU content distribution",
+    "date": "2025-12",
+    "platforms": [
+      "TikTok"
+    ],
+    "platform_family": "TikTok",
+    "ai_involvement_type": "Amplifier",
+    "description": "In December 2025, Poland urged the European Commission to investigate TikTok over the distribution of AI-generated content advocating Polish exit from the EU. The Polish letter emphasized \"the manner in which they are distributed\" rather than the content alone, framing the recommender architecture itself as the regulatory concern.",
+    "harm_type_primary": "AI-Generated Political Disinformation",
+    "harm_type_secondary": [],
+    "actor_axis": "Recommender-Amplified",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Content harm is recognizable but the Polish complaint emphasized \"manner of distribution\" rather than content alone, which the framework's content-centered logic does not cleanly accommodate."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "Not the framing of the complaint. Poland targets distribution architecture, not actor authenticity."
+      },
+      "recommendation": {
+        "fit": "clean",
+        "reason": "Distribution was the framing; the recommender system is the explicit regulatory object. The framework's vocabulary maps directly onto the complaint's language."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "Synthetic audiovisual material plus distribution architecture as combined risk. SbD framework engages partially because its preventive logic does not yet specify how to evaluate distribution-architecture interaction with synthetic content."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "Like C2, attribution problem at the recommender layer. The pairing with C2 establishes pattern formation across two member states, strengthening the doctrinal basis for treating recommender-architecture as a primary governance object.",
+    "sources": []
+  },
+  {
+    "id": "evt-2026-01-ec-opens-formal-dsa-proceedings-against",
+    "title": "EC opens formal DSA proceedings against X over AI features",
+    "date": "2026-01",
+    "platforms": [
+      "X"
+    ],
+    "platform_family": "X",
+    "ai_involvement_type": "Actor",
+    "description": "In January 2026, the European Commission opened formal Digital Services Act proceedings against X, citing concerns about the platform's AI features (including Grok) under DSA Article 34 systemic risk obligations. The proceedings examine whether X adequately assessed and mitigated systemic risks stemming from its AI features and recommender systems.",
+    "harm_type_primary": "Systemic Risk",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "no_fit",
+        "reason": "TSPA categorizes user behaviors. The proceedings target platform-AI design and recommender configuration, neither of which the framework's user-actor schema accommodates."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "Not the framing of the proceedings. EC examines design and functioning of platform AI features, not user authenticity."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "DSA proceedings explicitly cite recommender system risks. The framework's vocabulary is the regulatory frame, not just an analytical tool."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "DSA Article 34 frames AI features as design objects with systemic risk implications. The proceedings test whether this framing produces enforceable obligations."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "A regulator treats platform AI as a systemic risk object, requiring a framework that the existing TSPA does not have. The proceedings function as institutional acknowledgment that the integration depth has opened a governance gap.",
+    "sources": []
+  },
+  {
+    "id": "evt-2026-02-finji-tiktok-automated-ad-system-generat",
+    "title": "Finji: TikTok automated ad system generated racist AI variants of game art",
+    "date": "2026-02",
+    "platforms": [
+      "TikTok"
+    ],
+    "platform_family": "TikTok",
+    "ai_involvement_type": "Actor",
+    "description": "In February 2026, indie game studio Finji reported that TikTok's automated ad generation system had produced racist and sexually objectifying AI-modified variants of its game Tunic's character art. Finji had attempted to disable AI-generation settings; TikTok support described the process as part of \"a broader automated initiative\" that the advertiser could not fully opt out of. The platform's automation produced harmful content against the advertiser's explicit intent.",
+    "harm_type_primary": "Hateful Content",
+    "harm_type_secondary": [],
+    "actor_axis": "Platform-Generated",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Hateful Content fits at the harm layer. The actor is the platform's automated ad-generation system, not the advertiser, which the framework cannot describe without distorting the case."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No actor pattern. The producer is platform automation, not a coordinated user network."
+      },
+      "recommendation": {
+        "fit": "no_fit",
+        "reason": "Ads were generated by platform automation, not amplified by recommender ranking. The recommendation framework's vocabulary does not engage the production layer."
+      },
+      "design": {
+        "fit": "no_fit",
+        "reason": "The advertiser tried to disable AI generation but could not. Safety-by-Design framework cannot accommodate a system that overrides user-side controls; the framework presumes design protects user agency, while this case shows design overriding it."
+      }
+    },
+    "misfit_classification": "structural",
+    "misfit_rationale": "The clearest \"no clean abusive user\" case in the dataset. Platform automation produced harm against the advertiser's explicit intent. The framework cannot resolve responsibility because the actor is the automation pipeline itself, not any party with adjudicable intent.",
+    "sources": []
+  },
+  {
+    "id": "evt-2026-04-the-verge-tiktok-could-not-identify-ai-g",
+    "title": "The Verge: TikTok could not identify AI-generated ads lacking required disclosure",
+    "date": "2026-04",
+    "platforms": [
+      "TikTok"
+    ],
+    "platform_family": "TikTok",
+    "ai_involvement_type": "Tool",
+    "description": "In April 2026, The Verge documented apparently AI-generated ads on TikTok that lacked the AI disclosure TikTok's own ad policies require. The journalist could readily identify the ads as AI-generated; the platform's enforcement system did not. TikTok's own creative-AI tooling (Symphony, AI Avatars) enables advertisers to generate such content while platform-side disclosure enforcement lags.",
+    "harm_type_primary": "Deceptive Advertising",
+    "harm_type_secondary": [],
+    "actor_axis": "Hybrid-Agency",
+    "framework_mapping": {
+      "tspa": {
+        "fit": "partial",
+        "reason": "Fraud and Deceptive Behavior categories capture the harm. The actor splits between advertiser and platform tooling, which the framework's single-actor schema cannot fully describe."
+      },
+      "behavioral": {
+        "fit": "no_fit",
+        "reason": "No coordinated inauthentic behavior. Standard advertiser pipeline."
+      },
+      "recommendation": {
+        "fit": "partial",
+        "reason": "Ads enter the recommendation system without disclosure. The framework's intervention logic applies but disclosure-detection is upstream of ranking."
+      },
+      "design": {
+        "fit": "partial",
+        "reason": "TikTok policy requires AI disclosure; tooling fails to enforce. Safety-by-Design framework anticipates such enforcement design but the implementation gap is wide."
       }
     },
     "misfit_classification": "patchable",
-    "misfit_rationale": "The actor assumption is strained, but the failure is still tightly coupled to remediable guardrail and youth-safety design choices.",
-    "sources": [
-      {
-        "publication": "The Washington Post",
-        "title": "Snapchat tried to make a safe AI. It chats with me about booze and sex.",
-        "author": "Geoffrey A. Fowler",
-        "date": "2023-03-14",
-        "url": "https://www.washingtonpost.com/technology/2023/03/14/snapchat-myai/"
-      }
-    ]
+    "misfit_rationale": "Disclosure enforcement is a known engineering goal. Could be addressed by automated AI-content detection at ad ingestion. The misfit reflects implementation lag rather than categorical or assumption-level failure.",
+    "sources": []
   }
 ]
