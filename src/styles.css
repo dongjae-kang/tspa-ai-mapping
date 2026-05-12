@@ -697,6 +697,7 @@ thead th {
 
 .site-footer p {
   margin: 0;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
